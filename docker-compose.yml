@@ -11,6 +11,11 @@ services:
       - POSTGRES_PASSWORD=password_1234
     networks:
       - default
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   api:
     image: django-gis-api:latest
@@ -29,6 +34,9 @@ services:
       - DATABASE_HOST=postgis
       - DATABASE_PORT=5432
     depends_on:
+      postgis:
+        condition: service_healthy
+    links:
       - postgis
     networks:
       - default
