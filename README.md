@@ -36,3 +36,29 @@ Now that you have everything ready, you can start editing the files of this proj
 ```bash
 docker-compose restart api
 ```
+
+---
+
+## Test the API
+
+1. Create a super user account in the container console
+```bash
+python manage.py createsuperuser
+```
+
+2. Create users in the admin dashboard
+
+3. Get a token for a user
+
+![get token](./images/obtain_token.png)
+
+
+4. Execute commands to create, read, delete and update plots
+
+![create plot](./images/create_plot.png)
+
+![get plots](./images/get_plots.png)
+
+![delete plots](./images/delete_plot.png)
+
+![update plots](./images/update_plot.png)
